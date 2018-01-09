@@ -3,6 +3,9 @@ var connection;
 
 
 //SQL connection
+if(process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else{
     connection = mysql.createConnection({
         root: 3000,
         host: 'localhost',
@@ -10,6 +13,8 @@ var connection;
         password: '',
         database: 'burgers_db',
     });
+};
+
 
 connection.connect(function(err) {
     if (err) {
